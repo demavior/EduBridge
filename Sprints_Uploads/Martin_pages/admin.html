@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Admin Profile</title>
+</head>
+
+<body>
+    <header>
+        <h1>Admin Profile</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="admin.html">Admin profile</a></li>
+            <li><a href="teacher-report.html">Report for Teacher</a></li>
+            <li><a href="parent-report.html">Report for Parent</a></li>
+            <li><a href="manage-classes.html">Manage Classes</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section>
+            <!-- Admin profile details and settings -->
+            <h2>Admin Profile Details</h2>
+            <!-- <img src="images/default.jpg" alt="Admin Picture"> -->
+            <p>Name: Admin Name</p>
+            <p>Email: admin@example.com</p>
+            <p>Phone: 260-555-1234</p>
+            <button>Edit profile</button>
+            <!-- Additional profile details -->
+        </section>
+        <section>
+            <h2>User Management</h2>
+            <label for="userTypeFilter">Select User Type:</label>
+            <select id="userTypeFilter">
+                <option value="none"></option>
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+                <option value="parent">Parent</option>
+            </select>
+
+            <div id="userLists">
+                <div id="studentList" class="userList" style="display: none;">
+                    <h3>Students</h3>
+                    <!-- Display list of students -->
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <!-- Add more columns as needed -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Student 1</td>
+                                <td>student1@example.com</td>
+                                <!-- Add more rows as needed -->
+                            </tr>
+                            <tr>
+                                <td>Student 2</td>
+                                <td>student2@example.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="teacherList" class="userList" style="display: none;">
+                    <h3>Teachers</h3>
+                    <!-- Display list of teachers -->
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <!-- Add more columns as needed -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Teacher 1</td>
+                                <td>teacher1@example.com</td>
+                                <!-- Add more rows as needed -->
+                            </tr>
+                            <tr>
+                                <td>Teacher 2</td>
+                                <td>teacher2@example.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="parentList" class="userList" style="display: none;">
+                    <h3>Parents</h3>
+                    <!-- Display list of parents -->
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <!-- Add more columns as needed -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Parent 1</td>
+                                <td>parent1@example.com</td>
+                                <!-- Add more rows as needed -->
+                            </tr>
+                            <tr>
+                                <td>Parent 2</td>
+                                <td>parent2@example.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>Summary Information</h2>
+            <div>
+                <h3>Classes Summary</h3>
+                <p>Total Classes: [Number]</p>
+                <p>Active Classes: [Number]</p>
+            </div>
+            <div>
+                <h3>Students Summary</h3>
+                <p>Total Students: [Number]</p>
+                <p>Active Students: [Number]</p>
+            </div>
+            <div>
+                <h3>Teachers Summary</h3>
+                <p>Total Teachers: [Number]</p>
+                <p>Active Teachers: [Number]</p>
+            </div>
+            <div>
+                <h3>Parents Summary</h3>
+                <p>Total Parents: [Number]</p>
+                <p>Active Parents: [Number]</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 EduBridge. All rights reserved.</p>
+    </footer>
+    <script>
+        document.getElementById('userTypeFilter').addEventListener('change', function () {
+            var userType = this.value;
+            var userLists = document.querySelectorAll('.userList');
+            userLists.forEach(function (userList) {
+                if (userType === 'all' || userList.id.toLowerCase().includes(userType)) {
+                    userList.style.display = 'block';
+                } else {
+                    userList.style.display = 'none';
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>

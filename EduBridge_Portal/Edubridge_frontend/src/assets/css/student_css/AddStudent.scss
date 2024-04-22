@@ -1,0 +1,105 @@
+.addStudent-container {
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: rgba(245, 245, 245, 1);
+  padding: 20px; 
+
+  h1 {
+    text-align: center;
+    margin-bottom: 1.5rem; 
+    color: #333;
+  }
+
+  h3 {
+    position: relative;
+
+    .tooltip {
+      display: none;
+      position: absolute;
+      top: -20px;
+      left: 0;
+      background-color: #333;
+      color: #fff;
+      padding: 5px;
+      border-radius: 4px;
+      font-size: 12px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    &:hover .tooltip {
+      display: inline-block;
+      opacity: 1;
+    }
+  }
+
+  .addStudent-content {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+
+    .form-group {
+      margin-bottom: 1rem;
+
+      label {
+        display: block;
+        color: #333;
+        margin-bottom: 0.5rem;
+      }
+
+      input[type="text"],
+      input[type="file"] {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1rem;
+        color: #333;
+        margin-bottom: 1rem; 
+      }
+      .radio-group {
+        display: flex;
+        flex-direction: column; 
+
+        input[type="radio"] {
+          margin-bottom: 0.5rem; 
+        }
+      }
+
+      .radio-label {
+        display: block; 
+        margin-right: 0; 
+        font-size: 1rem;
+        color: #333;
+      }
+    }
+
+    .submit-button {
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 4px;
+      background-color: #007bff; 
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+    .data-set-table {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+  }
+}

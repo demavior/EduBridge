@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/HomePage.css' %}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/django-admin/">Admin</a></li>
+        </ul>
+    </nav>
+    
+    <h1>EduBridge API Endpoints</h1>
+    
+    <p>Welcome to EduBridge, a transformative digital classroom experience that bridges the gap between traditional teaching methods and online learning. Our platform empowers educators to create immersive lessons through videos and texts, tailored to inspire and challenge students. Students can learn at their own pace and test their comprehension with interactive questions. Teachers provide personalized feedback and grades, fostering a supportive learning environment. Parents can track their child's progress. Join [Your Project Name] today and shape the future of learning.</p>
+    
+    <table>
+        <tr>
+            <th>Endpoint Name</th>
+            <th>Endpoint Description</th>
+            <th>React Connection</th>
+        </tr>
+        <tr>
+            <td>/register/</td>
+            <td>User registration. This endpoint allows users to register and create an account. In this endpoint we have 3 users {Teacher, Parent, Student}. Each one will register normally except the teacher. After registration, the admin needs to approve the teacher account.</td>
+            <td>Connect to it in React using the appropriate route. For example, you can use the following code in React to make a POST request to the registration endpoint: axios.post('http://127.0.0.1:8000/user/register/')</td>
+        </tr>
+        <tr>
+            <td>/profile/</td>
+            <td>User profile. This endpoint allows users to view and update their profile information.</td>
+            <td>Connect to it in React using the appropriate route. For example, you can use the following code in React to make a GET request to the profile endpoint:axios.post('http://127.0.0.1:8000/user/profile/')</td>
+        </tr>
+        <tr>
+            <td>/login/</td>
+            <td>User login. This endpoint allows users to authenticate and log in to their account.</td>
+            <td>Connect to it in React using the appropriate route. For example, you can use the following code in React to make a POST request to the login endpoint: axios.post('http://127.0.0.1:8000/user/login/')</td>
+        </tr>
+        <tr>
+            <td>/logout/</td>
+            <td>User logout. This endpoint allows users to log out of their account.</td>
+            <td>Connect to it in React using the appropriate route. For example, you can use the following code in React to make a POST request to the logout endpoint: axios.post('http://127.0.0.1:8000/user/logout/')</td>
+        </tr>
+        <tr>
+            <td>/forgot-password/</td>
+            <td>Forgot password. This endpoint allows users to reset their password if they have forgotten it.</td>
+            <td>Connect to it in React using the appropriate route. For example, you can use the following code in React to make a POST request to the forgot password endpoint: axios.post('http://127.0.0.1:8000/user/forgot_password/')</td>
+        </tr>
+        <tr>
+            <td>/change-password/</td>
+            <td>Change password. This endpoint allows users to change their current password in the profile page.</td>
+            <td>Connect to it in React using the appropriate route. For example, you can use the following code in React to make a POST request to the change password endpoint: axios.post('http://127.0.0.1:8000/user/change-password/')</td>
+        </tr>
+    </table>
+
+    <footer>
+        <p>&copy; EduBridge. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,18 @@
+.dashboard {
+  display: flex;
+  height: 100vh; 
+
+  .content {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+
+    h1, h3, p {
+      margin: 0 0 20px; 
+    }
+  }
+}

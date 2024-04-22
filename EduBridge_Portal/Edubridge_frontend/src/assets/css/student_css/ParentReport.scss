@@ -1,0 +1,136 @@
+.parentReport-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 80%; 
+    padding: 20px;
+  
+    .parentStudents {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      
+      .contact-card {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 300px;
+  
+        h3 {
+          margin-top: 0;
+        }
+  
+        p {
+          margin-bottom: 10px;
+        }
+  
+        .view-classes-btn {
+          background-color: #007bff;
+          color: #fff;
+          border: none;
+          border-radius: 5px;
+          padding: 8px 16px;
+          cursor: pointer;
+          transition: background-color 0.3s;
+  
+          &:hover {
+            background-color: #0056b3;
+          }
+        }
+      }
+    }
+    
+    .studentClasses {
+      width: 100%;
+      overflow-x: auto; 
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      table-layout: fixed; 
+  
+      thead {
+        tr {
+          background-color: #f2f2f2; 
+          th {
+            padding: 10px 15px;
+            position: relative; 
+  
+            .tooltip {
+              display: inline-block;
+              position: relative;
+  
+              .tooltiptext {
+                visibility: hidden;
+                width: 120px;
+                background-color: black;
+                color: #fff;
+                text-align: center;
+                border-radius: 6px;
+                padding: 5px 0;
+
+                position: absolute;
+                z-index: 1;
+                bottom: 100%;
+                left: 50%;
+                margin-left: -60px; 
+                opacity: 0;
+                transition: opacity 0.3s;
+              }
+  
+              &:hover .tooltiptext {
+                visibility: visible;
+                opacity: 1;
+              }
+            }
+          }
+        }
+      }
+  
+      tbody tr {
+        &:nth-child(odd) {
+          background-color: #f9f9f9;
+        }
+  
+        td {
+          padding: 10px 15px;
+          border-bottom: 1px solid #ddd; 
+  
+          a, .view-samples-btn, .delete-btn {
+            display: block; 
+            padding: 5px;
+            color: #007bff; 
+            text-decoration: none;
+  
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+  
+          .view-samples-btn, .delete-btn {
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: center;
+          }
+  
+          .view-samples-btn {
+            background-color: #17a2b8; 
+          }
+  
+          .delete-btn {
+            background-color: #dc3545; 
+          }
+        }
+      }
+    }
+    
+  }
+  

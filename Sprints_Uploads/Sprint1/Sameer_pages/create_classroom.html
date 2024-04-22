@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Classroom</title>
+    <link rel="stylesheet" href="/Sprints_Uploads/Sprint2/Sameer_pages/create_classroom.css">
+</head>
+<body>
+    <header>
+        <h1>Create New Classroom</h1>
+    </header>
+    <main>
+        <section class="form-section">
+            <form action="add-data.html" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="class-name">Class Name:</label>
+                    <input type="text" id="class-name" name="class-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="content-type">Content Type:</label>
+                    <select id="content-type" name="content-type" required>
+                        <option value="video">Video</option>
+                        <option value="image">Image</option>
+                        <option value="text">Plain Text</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="submit-button">Create Classroom</button>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

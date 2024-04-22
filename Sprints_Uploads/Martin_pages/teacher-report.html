@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Report for Teacher</title>
+</head>
+
+<body>
+    <header>
+        <h1>Report for Teacher</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="admin.html">Admin profile</a></li>
+            <li><a href="teacher-report.html">Report for Teacher</a></li>
+            <li><a href="parent-report.html">Report for Parent</a></li>
+        </ul>
+    </nav>
+    <section>
+        <h2>Class Information</h2>
+        <label for="classSelection">Select Class:</label>
+        <select id="classSelection">
+            <option value="class1">Math 101</option>
+            <option value="class2">Math 201</option>
+            <!-- Every class of the teacher -->
+        </select>
+        <div>
+            <p>Class Name: Math 101</p>
+            <p>Grade Level: 9</p>
+            <p>Number of Students: 5</p>
+        </div>
+    </section>
+    <!-- For each student -->
+    <section>
+        <h2>Student Information</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Grades</th>
+                    <th>Attendance</th>
+                    <th>Behavior</th>
+                    <th>Parent email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Student information -->
+                <tr>
+                    <td>Student One</td>
+                    <td>95%</td>
+                    <td>100%</td>
+                    <td>Good</td>
+                    <td>student1@edubridge.com</td>
+                </tr>
+                <tr>
+                    <td>Student Two</td>
+                    <td>85%</td>
+                    <td>90%</td>
+                    <td>Good</td>
+                    <td>student2@edubridge.com</td>
+                </tr>
+                <tr>
+                    <td>Student Three</td>
+                    <td>85%</td>
+                    <td>90%</td>
+                    <td>Good</td>
+                    <td>student2@edubridge.com</td>
+                </tr>
+                <tr>
+                    <td>Student Four</td>
+                    <td>85%</td>
+                    <td>90%</td>
+                    <td>Good</td>
+                    <td>student2@edubridge.com</td>
+                </tr>
+                <tr>
+                    <td>Student Five</td>
+                    <td>85%</td>
+                    <td>90%</td>
+                    <td>Good</td>
+                    <td>student2@edubridge.com</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <section>
+        <h2>General Student Performance</h2>
+        <table>
+            <!-- Show information and graphs for grades, attendance, and behavior records -->
+        </table>
+    </section>
+    <section>
+        <h2>Communication History</h2>
+        <ul>
+            <!-- List of communications with parents -->
+            <li>Communication 1: Message sent to Parent X on Date</li>
+            <li>Communication 1: Message sent to Parent Y on Date</li>
+        </ul>
+    </section>
+    <footer>
+        <p>&copy; 2024 EduBridge. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

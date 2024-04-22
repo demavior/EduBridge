@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Questions</title>
+    <link rel="stylesheet" href="/Sprints_Uploads/Sprint2/Sameer_pages/add_question.css"> 
+</head>
+<body>
+    <main class="main-container">
+        <div class="form-container">
+        <section>
+            <h4>Add Question</h4>
+            <form action="" method="post">
+                <input type="hidden" name="form-TOTAL_FORMS" value="1" id="id_form-TOTAL_FORMS">
+                <input type="hidden" name="form-INITIAL_FORMS" value="0" id="id_form-INITIAL_FORMS">
+                <input type="hidden" name="form-MIN_NUM_FORMS" value="1" id="id_form-MIN_NUM_FORMS">
+                <input type="hidden" name="form-MAX_NUM_FORMS" value="1000" id="id_form-MAX_NUM_FORMS">
+                <div class="field-group">
+                    <label for="id_form-0-question"><strong>Enter a question*</strong></label>
+                    <input type="text" id="id_form-0-question" name="form-0-question" required>
+                </div>
+                <div class="field-group">
+                    <label for="id_form-0-question_type">Question Type</label>
+                    <select id="id_form-0-question_type" name="form-0-question_type" required onchange="addExtraOptions(this)">
+                        <option value="" selected disabled>Please select the question type</option>
+                        <option value="SC">Single Choice</option>
+                        <option value="MC">Multiple Choice</option>
+                        <option value="CM">Comment</option>
+                        <option value="SCA">Scale</option>
+                        <option value="DD">Dropdown Menu</option>
+                        <option value="CB">Checkbox</option>
+                    </select>
+                </div>
+                <div class="field-group checkbox">
+                    <input type="checkbox" id="id_form-0-is_required" name="form-0-is_required">
+                    <label for="id_form-0-is_required"><strong>Is the question required</strong></label>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Questions</button>
+            </form>
+            <a href="#" class="back-btn">Back</a>
+        </div>
+        </section>
+        </main>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    function updateIsRequiredVisibility(newElement) {
+        const questionTypeSelect = newElement.querySelector('select[name$="question_type"]');
+        const isRequiredCheckbox = newElement.querySelector('input[id$="is_required"]');
+    
+        if (questionTypeSelect && isRequiredCheckbox) {
+            function toggleIsRequired() {
+                if (questionTypeSelect.value === 'CB') {
+                    isRequiredCheckbox.parentElement.style.display = 'none'; 
+                } else {
+                    isRequiredCheckbox.parentElement.style.display = ''; 
+                }
+            }
+            toggleIsRequired();
+    
+            questionTypeSelect.addEventListener('change', toggleIsRequired);
+        }
+    }
+    function cloneMore(selector, prefix) {
+        var template = document.querySelector(selector);
+        var newElement = template.cloneNode(true);
+        var multipleChoice = newElement.querySelector('.multiple-choice-container');
+        if (multipleChoice) {
+            newElement.removeChild(multipleChoice);
+        }
+        var answerContainer = newElement.querySelector('.answer-container');
+        if (answerContainer) {
+            newElement.removeChild(answerContainer);
+        }
+    
+        var scaleContainer = newElement.querySelector('.scale-container');
+        if (scaleContainer) {
+            newElement.removeChild(scaleContainer);
+        }
+    
+        var total = $('#id_' + prefix + '-TOTAL_FORMS').val();
+        var inputs = newElement.querySelectorAll(':not([type=button]):not([type=submit]):not([type=reset])');
+        inputs.forEach(function(input) {
+            var name = input.getAttribute('name');
+            if (name) {
+                name = name.replace('-' + (total-1) + '-', '-' + total + '-');
+                var id = 'id_' + name;
+                if (input.tagName.toLowerCase() === 'select') {
+                    input.setAttribute('name', name);
+                    input.setAttribute('id', id);
+                } else {
+                    input.setAttribute('name', name);
+                    input.setAttribute('id', id);
+                    if(input.type != "checkbox" && input.type != "hidden"){
+                        input.value = '';
+                    }
+                    input.checked = false;
+                }
+            }
+        });
+    
+        var labels = newElement.querySelectorAll('label');
+        labels.forEach(function(label) {
+            var forValue = label.getAttribute('for');
+            if (forValue) {
+                forValue = forValue.replace('-' + (total-1) + '-', '-' + total + '-');
+                label.setAttribute('for', forValue);
+            }
+        });
+    
+        total++;
+        $('#id_' + prefix + '-TOTAL_FORMS').val(total);
+        template.after(newElement);
+        
+        var removeButtonExists = newElement.querySelector(".remove-button");
+        if (removeButtonExists) {
+            removeButtonExists.parentNode.removeChild(removeButtonExists);
+        }
+        var removeButton = document.createElement("button");
+        removeButton.className = "remove-button";
+        removeButton.innerHTML = "Remove";
+        removeButton.onclick = function(e){
+            e.preventDefault();
+            e.target.parentNode.remove();
+            var total = $('#id_' + prefix + '-TOTAL_FORMS').val();
+            $('#id_' + prefix + '-TOTAL_FORMS').val(total - 1);
+        };
+        newElement.appendChild(removeButton);
+        updateIsRequiredVisibility(newElement);
+    
+        return false;
+
+        
+    }
+    
+    $(document).on('click', '.add-form-row', function(e) {
+        e.preventDefault();
+        cloneMore('.question-container:last-of-type', 'form');
+        return false;
+    });   
+
+    function addExtraOptions(elem) {
+        const fields = elem.getAttribute('name').split('-');
+        const parentElem = elem.parentNode.parentNode;
+        const typeParentElem = elem.parentNode;
+        typeParentElem.nextElementSibling.classList.remove('hidden');
+
+        if (elem.value === 'SC' || elem.value === 'MC' || elem.value === 'DD' || elem.value === 'MCB') {
+            const scaleContainers = parentElem.querySelector('.scale-container');
+            if(scaleContainers) {
+                parentElem.removeChild(scaleContainers);
+            }
+
+            const containers = parentElem.querySelectorAll('.answer-container, .multiple-choice-container');
+            containers.forEach(container => container.remove());
+            const newDiv = document.createElement('div');
+            newDiv.classList.add('form-row', 'multiple-choice-container');
+            newDiv.innerHTML = `
+                <div class='form-group col-md-6'>
+                    <label for="id_form-${fields[1]}-number_of_choices" class="form-label">Number of Options</label>
+                   <input class="form-control"  id="id_form-${fields[1]}-number_of_choices" name="form-${fields[1]}-number_of_choices" required onchange='createAnswers(this, "${elem.value}")'>
+                </div>
+            `;
+            parentElem.insertBefore(newDiv, parentElem.lastElementChild);
+            
+        } else if (elem.value === 'CM') {
+            const answerContainers = parentElem.querySelector('.multiple-choice-container');
+            if(answerContainers) {
+                parentElem.removeChild(answerContainers);
+            }
+
+            const scaleContainers = parentElem.querySelector('.scale-container');
+            if(scaleContainers) {
+                parentElem.removeChild(scaleContainers);
+            }
+        } else if(elem.value === 'SCA') {
+            const answerContainers = parentElem.querySelector('.multiple-choice-container');
+            if(answerContainers) {
+                parentElem.removeChild(answerContainers);
+            }
+
+            const scaleContainers = parentElem.querySelector('.scale-container');
+            if(!scaleContainers) {
+                createScaleOptions(elem);
+            }
+
+        } else if(elem.value === 'CQ') {
+            const answerContainers = parentElem.querySelector('.multiple-choice-container');
+            if(answerContainers) {
+                parentElem.removeChild(answerContainers);
+            }
+
+        } else if(elem.value === 'CB'){
+            typeParentElem.nextElementSibling.classList.add('hidden');
+            const scaleContainers = parentElem.querySelector('.scale-container');
+            if(scaleContainers) {
+                parentElem.removeChild(scaleContainers);
+            }
+            const multipleChoiceContainers = parentElem.querySelector('.multiple-choice-container');
+            if (multipleChoiceContainers) {
+                parentElem.removeChild(multipleChoiceContainers);
+            } 
+            const answerContainers = parentElem.querySelector('.answers-container');
+            if (answerContainers) {
+                parentElem.removeChild(answerContainers);
+            }
+            const checkboxContainer = document.createElement('div');
+            
+            
+            parentElem.insertBefore(checkboxContainer, parentElem.lastElementChild);
+            
+        }
+    }
+
+    function createScaleOptions(element){
+        const fields = element.getAttribute('name').split('-');
+        const numAnswers = parseInt(element.value);
+        
+
+        answersDiv = document.createElement('div');
+        answersDiv.classList.add('form-row', 'scale-container', 'mb-3');
+        answersDiv.innerHTML = `
+            <div class="form-row col-md-12">
+                <div class="form-group col-md-6">
+                    <label for="id_form-${fields[1]}-question_scale_min-value">Min. Value</label>
+                    <input type="number"
+                        id="id_form-${fields[1]}-question_scale_min_value"
+                        name="form-${fields[1]}-question_scale_min_value"
+                        class="form-control"
+                        placeholder="Enter minimum scale value"
+                        required
+                    >
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="id_form-${fields[1]}-question_scale_min_value">Min. Value Description</label>
+                    <input type="text"
+                        id="id_form-${fields[1]}-question_scale_min_description"
+                        name="form-${fields[1]}-question_scale_min_description"
+                        class="form-control"
+                        placeholder="Enter minimum value description"
+                        required
+                    >
+                </div>
+            </div>
+            <div class="form-row col-md-12">
+                <div class="form-group col-md-6">
+                    <label for="id_form-${fields[1]}-question_scale_max_value">Max. Value</label>
+                    <input type="number"
+                        id="id_form-${fields[1]}-question_scale_max_value"
+                        name="form-${fields[1]}-question_scale_max_value"
+                        class="form-control"
+                        placeholder="Enter maximum scale value"
+                        required
+                    >
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="id_form-${fields[1]}-question_scale_max_description">Max. Value Description</label>
+                    <input type="text"
+                        id="id_form-${fields[1]}-question_scale_max_description"
+                        name="form-${fields[1]}-question_scale_max_description"
+                        class="form-control"
+                        placeholder="Enter maximum value description"
+                        required
+                    >
+                </div>
+            </div>
+        `
+        element.parentNode.parentNode.insertBefore(answersDiv, element.parentNode.nextElementSibling);
+        const minInput = answersDiv.querySelector(`#id_form-${fields[1]}-question_scale_min_value`);
+        const maxInput = answersDiv.querySelector(`#id_form-${fields[1]}-question_scale_max_value`);
+        
+        function validateMinMax() {
+            const minValue = parseFloat(minInput.value);
+            const maxValue = parseFloat(maxInput.value);
+    
+            if (minValue >= maxValue) {
+                alert("Minimum value should be less than maximum value. Please correct it.");
+                minInput.focus(); 
+                return false;
+            }
+            return true;
+        }
+        minInput.addEventListener('change', validateMinMax);
+        maxInput.addEventListener('change', validateMinMax);
+    }
+
+    function createAnswers(element, question_type) {
+        const fields = element.getAttribute('name').split('-');
+        const numAnswers = parseInt(element.value);
+        let answersDiv = element.parentNode.parentNode.querySelector('.answers-container');
+        if (answersDiv === null) {
+            answersDiv = document.createElement('div');
+            answersDiv.classList.add('form-row', 'answers-container', 'mb-3');
+            element.parentNode.parentNode.insertBefore(answersDiv, element.parentNode.nextElementSibling);
+        }
+        const answers = answersDiv.querySelectorAll('.col-md-6');
+        console.log('Number of inputs: '+answers.length)
+        if (numAnswers < answers.length) {
+            for (let i = answers.length - 1; i >= numAnswers; i--) {
+                answersDiv.removeChild(answers[i]);
+            }
+        } else if (numAnswers > answers.length) { 
+            for (let i = answers.length; i < numAnswers; i++) {
+                const inputDiv = document.createElement('div');
+                inputDiv.classList.add('col-md-6');
+                inputDiv.innerHTML = `
+                    <div class="form-group">
+                        <input type="text"
+                            id="id_form-${fields[1]}-question_choice-${i}"
+                            name="form-${fields[1]}-question_choice-${i}"
+                            class="form-control answers-input-field"
+                            placeholder="Enter choices options"
+                            required
+                        >
+                    </div>
+                `;
+                answersDiv.appendChild(inputDiv);
+            }
+        }
+    }        
+</script>
+<script>
+    document.getElementById('id_question_type').addEventListener('change', function(e) {
+        var choicesDiv = document.getElementById('choices_div');
+        var scaleDiv = document.getElementById('scale_div');
+
+        if (['MC', 'SC', 'DD', 'CB', 'MCB', 'CQ'].includes(e.target.value)) {
+            choicesDiv.style.display = 'block';
+            scaleDiv.style.display = 'none';
+        } else if (e.target.value === 'SCA') {
+            choicesDiv.style.display = 'none';
+            scaleDiv.style.display = 'block';
+        } else {
+            choicesDiv.style.display = 'none';
+            scaleDiv.style.display = 'none';
+        }
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('form');
+    
+        form.addEventListener('submit', function(e) {
+            const scaleContainers = document.querySelectorAll('.scale-container');
+            
+            for (const container of scaleContainers) {
+                const minInput = container.querySelector('input[id$="question_scale_min_value"]');
+                const maxInput = container.querySelector('input[id$="question_scale_max_value"]');
+    
+                if (minInput && maxInput) {
+                    const minValue = parseFloat(minInput.value);
+                    const maxValue = parseFloat(maxInput.value);
+    
+                    if (minValue >= maxValue) {
+                        e.preventDefault();  
+                        alert("Minimum value should be less than maximum value. Please correct it.");
+                        minInput.focus(); 
+                        return false;
+                    }
+                }
+            }
+        });
+    });
+</script> 
+</body>
+</html>
+  

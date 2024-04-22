@@ -1,0 +1,26 @@
+.home-page {
+  padding: 2rem;
+  font-family: 'Arial', sans-serif;
+
+  .home-header {
+    color: #333; 
+    padding: 2rem;
+    text-align: center;
+
+    h1 {
+      margin: 0;
+      font-size: 3rem; 
+    }
+  }
+
+  .home-content {
+    margin-top: 1rem;
+
+    .info-section {
+      color: #333; 
+      padding: 2rem; 
+      font-size: 1.25rem; 
+      line-height: 1.6; 
+    }
+  }
+}
