@@ -1,3 +1,5 @@
+# EduBridge
+
 ## Project Overview
 EduBridge is a web-based platform designed to enhance the educational experience for students, educators, and parents, focusing primarily on middle and high school levels. This project aims to address the fundamental need for streamlined, accessible, and centralized educational engagement.
 
