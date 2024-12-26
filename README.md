@@ -1,13 +1,3 @@
-
-# EduBridge - Group 2
-
-## Team Members
-- Sameer Karali
-- Kakunuri, Venkata Akash Reddy
-- Okolie, Esther
-- Vivas, Martin
-
-
 ## Project Overview
 EduBridge is a web-based platform designed to enhance the educational experience for students, educators, and parents, focusing primarily on middle and high school levels. This project aims to address the fundamental need for streamlined, accessible, and centralized educational engagement.
 
@@ -17,22 +7,13 @@ EduBridge is a web-based platform designed to enhance the educational experience
 - **Database:** PostgreSQL, a powerful open-source object-relational database system.
 - **Testing:** Utilizing built-in testing tools provided by React and Django.
 - **Deployment/Hosting:** Heroku, a cloud platform as a service.
-- **Version Control:** GitHub for efficient management of the codebase and collaboration among team members.
+- **Version Control:** GitHub for efficient codebase management and collaboration among team members.
 
 ## Agile Development
-This project is developed using Agile methodologies, focusing on effective collaboration and productivity across 5 two-week sprints. Each sprint aims to complete specific user stories that define the primary features and interactions of the website.
+This project is developed using Agile methodologies. It focuses on effective collaboration and productivity across five two-week sprints. Each sprint aims to complete specific user stories that define the website's primary features and interactions.
 
 ## Installation & Setup
-Instructions on setting up the project locally, including environment setup, dependency installation, and running the project, will be provided here.
-
-## Contribution Guidelines
-- Ensure to follow the project's coding standards and guidelines.
-- Use pull requests for contributions, clearly describing changes and the value they add to the project.
-- Review and feedback from at least one other team member are required before merging.
+Here, we will provide instructions on setting up the project locally, including setting up the environment, installing dependencies, and running the project.
 
 ## License
 This project is licensed under the [MIT License](LICENSE).
-
----
-
-For more information or to view the progress, please contact any of the team members.
