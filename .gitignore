@@ -192,8 +192,9 @@ cover/
 # Django stuff:
 *.log
 local_settings.py
-#db.sqlite3 normally you do not include this file in version control, but I am for the sake of easier testing
-db.sqlite3-journal same with this file
+#normally you do not include this file in version control
+db.sqlite3 
+db.sqlite3-journal
 
 # Flask stuff:
 instance/
