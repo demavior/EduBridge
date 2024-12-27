@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SideBar from './StudentSideBar';
-import '../../assets/css/student_css/Dashboard.scss';
+import '../../assets/css/Dashboard.scss';
 
 const Dashboard = () => {
   const [username, setUsername] = useState('');

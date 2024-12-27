@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import SideBar from './ParentSideBar';
-import '../../assets/css/parent_css/Dashboard.scss';
+import '../../assets/css/Dashboard.scss';
 
 const ParentDashboard = () => {
     const [username, setUsername] = useState('');
