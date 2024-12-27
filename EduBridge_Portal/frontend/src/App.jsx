@@ -41,10 +41,6 @@ import ViewStudentGrade from './views/student_dashboard/ViewStudentGrade';
 import AddStudent from './views/parent_dashboard/AddStudent';
 import ParentReport from './views/parent_dashboard/ParentReport';
 
-
-
-
-
 function App() {
   return (
     <Router>
@@ -121,6 +117,5 @@ export const showErrorNotification = (message) => {
     backgroundColor: 'red',
   });
 };
-
 
 export default App;
